@@ -43,7 +43,7 @@ body {
     outline: 2px solid var(--accent-color);
 }
 
-.save-btn {
+.save-btn, .btn {
     border: none;
     border-radius: 4px;
     padding: .5em 1em;
