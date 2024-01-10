@@ -1,16 +1,20 @@
 const noteArea = document.querySelector('.note-area');
 const saveBtn = document.querySelector('.save-btn');
 const savedNotesList = document.querySelector('.saved-notes');
-let savedNotes = []; // store date/time and message
-let note = "";
+const noteEl = document.querySelector('.note');
+const indexPage = document.querySelector('.index-page');
 
+let savedNotes = []; // store date/time and message
+let noteText = '';
 let date =  new Date();
 let month = date.getMonth();
 let day = date.getDate();
 let  currentDay = `${day}.${month}.${date.getFullYear()}`;
 const currentTime = `${date.getHours()}:${date.getMinutes()}`;
 
-saveBtn.addEventListener('click', addNote);
+function addSaveBtnEvent() {
+    saveBtn.addEventListener('click', addNote);
+}
 
 function addNote() {
     if (validInput(noteArea.value)) { 
@@ -18,6 +22,7 @@ function addNote() {
         savedNotes.push({time: currentDay, note: noteArea.value});
         noteArea.value = '';
         renderElements();
+        addLinkEvent();
         console.log(savedNotes);
     } else {
         return;
@@ -28,8 +33,8 @@ function renderElements() {
     let list = '';
     for (let i = 0; i < savedNotes.length; i++) {
         list = `
-        <li class="note-link">
-            <a href="#note">${savedNotes[i].time}</a>
+        <li class="note-link" value="${i}">
+            <a href="#" class="note-text" >${savedNotes[i].time}</a>
         </li>`;
     }
     savedNotesList.innerHTML += list;
@@ -64,3 +69,21 @@ function validInput(note) {
         return true;
     }
 }
+
+function addLinkEvent() {
+    // loop through notes a tags add an eventlistener
+    const listLinks = document.querySelectorAll('.note-link');
+    listLinks.forEach((e)=> {
+        e.addEventListener('click', () => {
+            noteText = savedNotes[e.value].note;
+            console.log(savedNotes);
+            window.open('./pages/note.html', '_self');
+        });
+    });
+}
+
+function renderNotePage() {
+    noteEl.textContent = noteText;
+    console.log(noteText)
+}
+
