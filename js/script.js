@@ -77,13 +77,12 @@ function addLinkEvent() {
         e.addEventListener('click', () => {
             noteText = savedNotes[e.value].note;
             console.log(savedNotes);
-            window.open('./pages/note.html', '_self');
         });
     });
 }
 
-function renderNotePage() {
-    noteEl.textContent = noteText;
-    console.log(noteText)
-}
+// function renderNotePage() {
+//     noteEl.textContent = noteText;
+//     console.log(noteText)
+// }
 
