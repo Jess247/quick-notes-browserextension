@@ -48,6 +48,6 @@ body {
     border-radius: 4px;
     padding: .5em 1em;
     color: var(--font-color);
-    background: linear-gradient(60deg,var(--accent-color), var(--accent-color2));
+    background: var(--accent-color2);
 
 }
