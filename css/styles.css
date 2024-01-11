@@ -9,13 +9,14 @@
     --font-color: #fefefe;
     --light-color: #9ff3a0;
     --accent-color: #3cdf59;
-    --accent-color2: #581383;
+    --accent-color2: #b699c8;
 }
 
 body {
     background: var(--light-color);
     font-family: 'Montserrat', 'Open Sans', sans-serif;
     text-align: center;
+    min-width: 300px;
 }
 
 .header {
@@ -49,11 +50,19 @@ body {
     padding: .5em 1em;
     color: var(--font-color);
     background: var(--accent-color2);
-
+    font-weight: 500;
+}
+.note-link {
+    margin: .5rem;
 }
 
-.note {
-    margin: .5em;
+.visible {
+    width: 80%;
+    margin: .5em auto;
+    background: #fefefe;
+    border-radius: 4px;
+    padding: 2em;
+    
 }
 .hidden {
     display: none;

@@ -1,2 +1,3 @@
 # quick-notes-browserextension
-Broserextension build with HTML, CSS, JavaScript and json.
+
+Browser extension build with HTML, CSS, JavaScript and json.
