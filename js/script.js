@@ -1,8 +1,7 @@
 const noteArea = document.querySelector('.note-area');
 const saveBtn = document.querySelector('.save-btn');
 const savedNotesList = document.querySelector('.saved-notes');
-const noteEl = document.querySelector('.note');
-const indexPage = document.querySelector('.index-page');
+const body = document.querySelector('body');
 
 let savedNotes = []; // store date/time and message
 let noteText = '';
@@ -34,7 +33,8 @@ function renderElements() {
     for (let i = 0; i < savedNotes.length; i++) {
         list = `
         <li class="note-link" value="${i}">
-            <a href="#" class="note-text" >${savedNotes[i].time}</a>
+            <a>${savedNotes[i].time}</a>
+            <p class="note hidden">${savedNotes[i].note}</p>
         </li>`;
     }
     savedNotesList.innerHTML += list;
@@ -75,14 +75,14 @@ function addLinkEvent() {
     const listLinks = document.querySelectorAll('.note-link');
     listLinks.forEach((e)=> {
         e.addEventListener('click', () => {
-            noteText = savedNotes[e.value].note;
-            console.log(savedNotes);
+            const noteEl = document.querySelector('.note')
+            if (noteEl.classList.contains('hidden')) {
+                noteEl.classList.remove('hidden')
+            } else {
+                noteEl.classList.add('hidden')
+            }
         });
     });
 }
 
-// function renderNotePage() {
-//     noteEl.textContent = noteText;
-//     console.log(noteText)
-// }
 

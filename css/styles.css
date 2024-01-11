@@ -51,3 +51,10 @@ body {
     background: var(--accent-color2);
 
 }
+
+.note {
+    margin: .5em;
+}
+.hidden {
+    display: none;
+}
