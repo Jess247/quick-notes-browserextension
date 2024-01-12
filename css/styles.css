@@ -52,8 +52,21 @@ body {
     background: var(--accent-color2);
     font-weight: 500;
 }
+
 .note-link {
     margin: .5rem;
+    list-style: none;
+}
+
+.note-link a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: black;
+}
+
+.note-link a:hover {
+    text-decoration: underline;
+    color: var(--accent-color2);
 }
 
 .visible {

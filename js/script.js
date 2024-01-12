@@ -4,10 +4,10 @@ const savedNotesList = document.querySelector('.saved-notes');
 const body = document.querySelector('body');
 
 let savedNotes = []; 
-let notesFromLocalStorage = JSON.parse(localStorage.getItem("savedNotes" || "[]"))
+const notesFromLocalStorage = JSON.parse(localStorage.getItem("savedNotes" || "[]"))
 if (notesFromLocalStorage) {
     savedNotes = notesFromLocalStorage;
-    renderElements();
+    renderElements(savedNotes);
     addLinkEvent();
 }
 console.log(notesFromLocalStorage) 
@@ -25,20 +25,20 @@ function addNote() {
         savedNotes.push({time: currentDay, note: noteArea.value});
         noteArea.value = '';
         localStorage.setItem('savedNotes', JSON.stringify(savedNotes))
-        renderElements();
+        renderElements(savedNotes);
         addLinkEvent();
     } else {
         return;
     }
 }
 
-function renderElements() {
+function renderElements(obj) {
     let list = '';
-    for (let i = 0; i < savedNotes.length; i++) {
+    for (let i = 0; i < obj.length; i++) {
         list += `
         <li class="note-link" value="${i}">
-            <a href="#">${savedNotes[i].time}</a>
-            <p class="note${i} hidden visible">${savedNotes[i].note}</p>
+            <a href="#">${obj[i].time}</a>
+            <p class="note${i} hidden visible">${obj[i].note}</p>
         </li>`;
     }
     savedNotesList.innerHTML = list;
@@ -75,7 +75,6 @@ function validInput(note) {
 }
 
 function addLinkEvent() {
-    // loop through notes a tags add an eventlistener
     const listLinks = document.querySelectorAll('.note-link');
     listLinks.forEach((e)=> {
         e.addEventListener('click', () => {
